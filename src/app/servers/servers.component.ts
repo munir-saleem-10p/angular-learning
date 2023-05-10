@@ -7,21 +7,22 @@ import { Component, OnInit } from '@angular/core';
 
   // selector: '.app-servers', // we can also use it with .(dot) and can also use as css selector. usage <div class="app-servers"></div>. Info by id is not supported by angular.
 
-
   templateUrl: './servers.component.html',
-  styleUrls: ['./servers.component.scss']
+  styleUrls: ['./servers.component.scss'],
 })
 export class ServersComponent implements OnInit {
-  serverId= 10;
   addNewServer: boolean = false;
+  serverStatus: string = "Server is not available";
 
-  constructor(){
-    setTimeout(() => {
-      this.addNewServer = true;
-    }, 2000);
+  constructor() {
+    // setTimeout(() => {
+    //   this.addNewServer = true;
+    // }, 2000);
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
+  onCreateServer(){
+    this.serverStatus = "Server is created";
+  }
 }
