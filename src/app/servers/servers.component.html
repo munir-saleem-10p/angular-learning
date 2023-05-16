@@ -1,4 +1,18 @@
-<button class="btn btn-primary" (click)="onCreateServer()">Add Server</button>
-<p [innerText]="serverStatus"></p>
+<label for="serverNameInput">Server Name</label><br/>
+<!-- $event is the reserverd variable name to catch the event date -->
+<!-- without [(ngModule)] -->
+<!-- <input id="serverNameInput" type="text" (input)="onChange($event)" class="form-control mb-2" /> -->
+
+<!-- with ngModule for two-way-binding -->
+<!-- <input id="serverNameInput" type="text" [(ngModel)]="serverName" class="form-control mb-2" /> -->
+<input id="serverNameInput" type="text" [(ngModel)]="serverName" class="form-control mb-2" />
+<p *ngIf="serverName">New Server name will be: {{ serverName }}</p>
+<br/>
+<button class="btn btn-primary" (click)="onCreateServer()">Add Server</button><br/>
+
+<h4>Servers</h4>
+<p [innerText]="serverStatus" class="alert alert-warning" [ngClass]="!isAlertError ? 'alert-info' : 'alert-danger'"></p>
+
+{{isAlertError}}
 <app-server></app-server>
 <app-server></app-server>

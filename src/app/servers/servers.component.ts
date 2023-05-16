@@ -13,6 +13,8 @@ import { Component, OnInit } from '@angular/core';
 export class ServersComponent implements OnInit {
   addNewServer: boolean = false;
   serverStatus: string = "Server is not available";
+  serverName : string = '';
+  isAlertError:boolean =  false;
 
   constructor() {
     // setTimeout(() => {
@@ -23,6 +25,17 @@ export class ServersComponent implements OnInit {
   ngOnInit(): void {}
 
   onCreateServer(){
-    this.serverStatus = "Server is created";
+
+    if(this.serverName){
+      this.isAlertError = false;
+      this.serverStatus = `Server with name "${this.serverName}" is created`;
+    }else{
+      this.isAlertError = true;
+      this.serverStatus = 'Invalid Server name';
+    }
+  }
+
+  onChange(event: Event){
+    this.serverName = (<HTMLInputElement>event.target).value;
   }
 }
